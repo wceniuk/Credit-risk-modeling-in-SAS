@@ -1,5 +1,3 @@
-LIBNAME mylib '/home/u49823291/sasuser.v94/Projekt';
-
 proc import out=WORK.cr_loan datafile='/home/u49823291/sasuser.v94/Projekt/cr_loan.csv' dbms=CSV replace;
    getnames=YES;
    delimiter=',';
