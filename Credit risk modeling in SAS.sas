@@ -300,4 +300,18 @@ run;
 
 ods graphics off;
 
+/*Decision tree model */
+
+ods graphics on;
+
+proc hpsplit data=training;
+class loan_status person_home_ownership loan_intent loan_grade cb_person_default_on_file;
+model loan_status(event='1') = person_home_ownership loan_intent loan_grade cb_person_default_on_file person_age person_income person_emp_length loan_amnt loan_int_rate loan_percent_income;
+prune costcomplexity;
+partition fraction(validate=0.3 seed=42);
+output out=scored;
+run;
+
+ods graphics off;
+
 
